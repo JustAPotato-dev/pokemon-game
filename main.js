@@ -39,6 +39,15 @@ foregroundImage.src = "./img/foregroundObjects.png";
 const playerDownImage = new Image();
 playerDownImage.src = "./img/playerDown.png";
 
+const playerUpImage = new Image();
+playerUpImage.src = "./img/playerUp.png";
+
+const playerLeftImage = new Image();
+playerLeftImage.src = "./img/playerLeft.png";
+
+const playerRightImage = new Image();
+playerRightImage.src = "./img/playerRight.png";
+
 const player = new Sprite({
     position: {
         x: canvas.width / 2 - 192 / 4 / 2,
@@ -46,6 +55,12 @@ const player = new Sprite({
     },
     image: playerDownImage,
     frames: { max: 4 },
+    sprites: {
+        up: playerUpImage,
+        left: playerLeftImage,
+        right: playerRightImage,
+        down: playerDownImage,
+    },
 });
 
 const background = new Sprite({
@@ -100,7 +115,11 @@ function animate() {
     foreground.draw();
 
     let moving = true;
+    player.moving = false;
+
     if (keys.w.pressed && lastKey === "w") {
+        player.moving = true;
+        player.image = player.sprites.up;
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i];
             if (
@@ -124,6 +143,8 @@ function animate() {
                 movable.position.y += 3;
             });
     } else if (keys.a.pressed && lastKey === "a") {
+        player.moving = true;
+        player.image = player.sprites.left;
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i];
             if (
@@ -148,6 +169,8 @@ function animate() {
             });
         }
     } else if (keys.s.pressed && lastKey === "s") {
+        player.moving = true;
+        player.image = player.sprites.down;
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i];
             if (
@@ -172,6 +195,8 @@ function animate() {
             });
         }
     } else if (keys.d.pressed && lastKey === "d") {
+        player.moving = true;
+        player.image = player.sprites.right;
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i];
             if (
