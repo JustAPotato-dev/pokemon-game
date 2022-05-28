@@ -33,6 +33,9 @@ collisionsMap.forEach((row, i) => {
 const townImage = new Image();
 townImage.src = "./img/Pellet Town.png";
 
+const foregroundImage = new Image();
+foregroundImage.src = "./img/foregroundObjects.png";
+
 const playerDownImage = new Image();
 playerDownImage.src = "./img/playerDown.png";
 
@@ -51,6 +54,14 @@ const background = new Sprite({
         y: offset.y,
     },
     image: townImage,
+});
+
+const foreground = new Sprite({
+    position: {
+        x: offset.x,
+        y: offset.y,
+    },
+    image: foregroundImage,
 });
 
 const keys = {
@@ -86,6 +97,7 @@ function animate() {
         boundary.draw();
     });
     player.draw();
+    foreground.draw();
 
     let moving = true;
     if (keys.w.pressed && lastKey === "w") {
