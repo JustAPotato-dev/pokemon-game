@@ -42,9 +42,11 @@ document.querySelectorAll("button").forEach((button) => {
             renderedSprites,
         });
 
+        const randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)];
+
         queue.push(() => {
             draggle.attack({
-                attack: attacks.Tackle,
+                attack: randomAttack,
                 recipient: emby,
                 renderedSprites,
             });
@@ -53,10 +55,8 @@ document.querySelectorAll("button").forEach((button) => {
 });
 
 document.querySelector("#dialogueBox").addEventListener("click", (event) => {
-    console.log(queue);
     if (queue.length > 0) {
         queue[0]();
         queue.shift();
     } else event.currentTarget.style.display = "none";
-    console.log("clicked dialogue");
 });
