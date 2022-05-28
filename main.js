@@ -185,6 +185,7 @@ function animate() {
                             opacity: 1,
                             duration: 0.4,
                             onComplete() {
+                                initBattle();
                                 animateBattle();
                                 gsap.to("#overlappingDiv", {
                                     opacity: 0,
@@ -304,7 +305,8 @@ function animate() {
         }
     }
 }
-// animate()
+
+animate();
 
 let lastKey = "";
 window.addEventListener("keydown", (event) => {
