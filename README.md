@@ -34,7 +34,7 @@
 
 [![Pokemon game][product-screenshot]](https://github.com/JustAPotato-dev/pokemon-game)
 
-Follow along with this tutorial to create a multi-room platformer game with JavaScript and HTML Canvas.
+Follow along with this tutorial to create a simple pokemon game with JavaScript and HTML Canvas.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
